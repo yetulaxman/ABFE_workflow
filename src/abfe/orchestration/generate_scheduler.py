@@ -7,7 +7,7 @@ from abfe.template import default_slurm_config_path
 
 class scheduler():
 
-    def __init__(self, out_dir_path: str, n_cores: int = 1, time: str = "96:00:00", partition:str="cpu", cluster_config:dict={}) -> None:
+    def __init__(self, out_dir_path: str, n_cores: int = 1, time: str = "96:00:00", partition:str="small", cluster_config:dict={}) -> None:
         self.n_cores = n_cores
         self.out_dir_path = out_dir_path
         self.out_job_path = out_dir_path + "/job.sh"
@@ -31,7 +31,7 @@ class scheduler():
             self.out_job_path = [self.out_job_path]
 
         file_str = [
-            "#!/bin/env bash",
+            "#!/usr/bin/env bash",
             "",
         ]
         #SnakeMake Scheduler File:
@@ -110,7 +110,7 @@ class scheduler():
 
             # TODO: change this here, such each job can access resource from cluster-config!
             file_str = "\n".join([
-                "#!/bin/env bash",
+                "#!/usr/bin/env bash",
                 "snakemake --cluster \"" + cluster_config["queue_submission_cmd"] + " " + cluster_options + "\" "
                             "--cluster-config " + cluster_conf_path + " "
                              "--cluster-status " + status_script_path + " "
@@ -123,7 +123,7 @@ class scheduler():
         else:
 
             file_str = "\n".join([
-                "#!/bin/env bash",
+                "#!/usr/bin/env bash",
                 "snakemake -c " + str(self.n_cores) + " -j "+str(num_jobs)+" --latency-wait " + str(
                     latency_wait) + " --rerun-incomplete " + snake_job
             ])

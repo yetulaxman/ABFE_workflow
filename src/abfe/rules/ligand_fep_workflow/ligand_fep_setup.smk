@@ -41,7 +41,7 @@ rule fep_setup_ligand:
             echo "center equil sim"
             echo "0" | gmx trjconv -s {params.feptop_dir}/ligand.gro -f {input.equil_gro} -o {params.feptop_dir}/whole.gro -pbc whole
             echo "0" | gmx trjconv -s {params.feptop_dir}/ligand.gro -f {params.feptop_dir}/whole.gro -o {params.feptop_dir}/nojump.gro -pbc nojump
-            echo "1 0" | gmx trjconv -s {params.feptop_dir}/ligand.gro -f {params.feptop_dir}/nojump.gro -o {output.fep_gro} -pbc mol -center -ur compact
+            echo "1 0" | gmx trjconv -s {params.feptop_dir}/ligand.gro -f {params.feptop_dir}/nojump.gro -o {output.fep_gro} -center -ur compact
             rm {params.feptop_dir}/whole.gro {params.feptop_dir}/nojump.gro
 
             

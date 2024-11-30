@@ -15,6 +15,6 @@ CONFOUT="${STEPNAME}.gro"
 gmx grompp -f ./${STEPNAME}.mdp -c ${STRUCTURE} -r ${STRUCTURE} -p ${TOPOLOGY} -o ${GROMACS_TPR} -maxwarn 2
 
 # run gromacs command
-gmx mdrun -ntomp ${OMP_NUM_THREADS} -s $GROMACS_TPR -c $CONFOUT -deffnm ${STEPNAME} -pme gpu -pmefft gpu -bonded gpu -nb gpu
+gmx mdrun -ntomp ${OMP_NUM_THREADS} -s $GROMACS_TPR -c $CONFOUT -deffnm ${STEPNAME} -pme gpu -pmefft gpu -bonded gpu -nb gpu -ntmpi 1
 
 exit 0

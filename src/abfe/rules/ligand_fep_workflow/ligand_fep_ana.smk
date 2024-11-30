@@ -50,5 +50,5 @@ rule fep_ana_get_dg_ligand:
     shell:
         '''
                 set -e
-                python {params.script_dir}/free_energy/calculate_ABFE_transformation_dG.py --xvg_path {input.xvg_dir} --conf_path {params.conf_path} --out_path {params.out_dir} --system_name ligand
+               /projappl/project_462000007/ABFE_workflow/bin/python  {params.script_dir}/free_energy/calculate_ABFE_transformation_dG.py --xvg_path {input.xvg_dir} --conf_path {params.conf_path} --out_path {params.out_dir} --system_name ligand
         '''

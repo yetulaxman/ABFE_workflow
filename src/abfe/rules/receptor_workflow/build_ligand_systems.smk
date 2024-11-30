@@ -46,7 +46,7 @@ rule build_ligand_system:
         out_complex_top=approach_path+"/{ligand_name}/input/complex/complex.top",
     shell:
         """
-            python {params.script_dir}/preparation/generate_ABFE_systems.py --ligand_sdf_dir {input.ligand_sdf} \
+            /projappl/project_462000007/ABFE_workflow/bin/python {params.script_dir}/preparation/generate_ABFE_systems.py --ligand_sdf_dir {input.ligand_sdf} \
             --protein_pdb_path {input.protein_pdb} \
             --cofactor_sdf_path {params.cofactor_sdf} --output_dir_path {input.output_dir} -ff {params.ff}
         """

@@ -15,4 +15,4 @@ rule gather_receptor_results:
     output:
         out_dG_File=approach_path+"/abfe_results.tsv",
     shell:
-        "python {params.script_dir}/final_receptor_results.py --in_root_dir {input.approach_path} --out_dir {input.approach_path}"
+        "/projappl/project_462000007/ABFE_workflow/bin/python {params.script_dir}/final_receptor_results.py --in_root_dir {input.approach_path} --out_dir {input.approach_path}"

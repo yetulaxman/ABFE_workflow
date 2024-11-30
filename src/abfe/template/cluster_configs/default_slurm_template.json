@@ -9,8 +9,10 @@
             "sep": ":"
         },
         "queue_job_options": {
-            "partition": "cpu",
+            "partition": "small",
+	    "account":"project_462000007",
             "mem": "5000",
+	    "time": "02:00:00",
             "cpus-per-task": 5
         }
     },
@@ -24,9 +26,11 @@
             "sep": ":"
         },
         "queue_job_options": {
-            "partition": "cpu",
-            "mem": "5000",
-            "cpus-per-task": 5
+            "partition": "small-g",
+	    "account":"project_462000007",
+            "mem": "6000",
+	    "time": "02:00:00",
+            "cpus-per-task": 6
         }
     }
 }

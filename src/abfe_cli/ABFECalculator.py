@@ -53,7 +53,7 @@ def main():
         cluster_config["Sub_job"]["queue_job_options"]["cpus-per-task"] = int(
             args.number_of_parallel_ligand_jobs
         )
-        cluster_config["Sub_job"]["queue_job_options"]["partition"] = "gpu"
+        cluster_config["Sub_job"]["queue_job_options"]["partition"] = "standard-g"
 
 
     res = calculate_abfe(protein_pdb_path=args.protein_pdb_path, ligand_sdf_paths=sdf_paths, out_root_folder_path=args.output_dir_path,

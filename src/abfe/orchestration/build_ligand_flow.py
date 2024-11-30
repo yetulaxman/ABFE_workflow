@@ -79,7 +79,7 @@ def build_replicas_simulation_flow(out_ligand_path: str, input_ligand_path: str,
 
             scheduler.out_job_path = out_out_ligand_path + "/job_ligand.sh"
             if(cluster_config is not None):
-                cluster_config["Sub_job"]["queue_job_options"]['partition'] = "cpu"
+                cluster_config["Sub_job"]["queue_job_options"]['partition'] = "small"
                 cluster =True
             else:
                 cluster =False
@@ -113,7 +113,7 @@ def build_replicas_simulation_flow(out_ligand_path: str, input_ligand_path: str,
 
             scheduler.out_job_path = out_complex_path + "/job_complex.sh"
             if(cluster_config is not None):
-                cluster_config["Sub_job"]["queue_job_options"]['partition'] = "gpu"
+                cluster_config["Sub_job"]["queue_job_options"]['partition'] = "standard-g"
             job_complex_file_path = scheduler.generate_job_file(cluster=cluster, cluster_config=cluster_config,
                                                                 cluster_conf_path=out_complex_path + "/cluster_conf.json",
                                                                 out_prefix=ligand_rep_name, num_jobs=num_jobs,
@@ -134,7 +134,7 @@ def build_replicas_simulation_flow(out_ligand_path: str, input_ligand_path: str,
 
             scheduler.out_job_path = out_replica_path + "/job.sh"
             if(cluster_config is not None):
-                cluster_config["Sub_job"]["queue_job_options"]['partition'] = "cpu"
+                cluster_config["Sub_job"]["queue_job_options"]['partition'] = "small"
             job_file_path = scheduler.generate_job_file(cluster=cluster, cluster_config=cluster_config,
                                                         cluster_conf_path=out_replica_path + "/cluster_conf.json",
                                                         snake_file_path=global_snake_path,
@@ -143,7 +143,7 @@ def build_replicas_simulation_flow(out_ligand_path: str, input_ligand_path: str,
             # Final settings
             scheduler.out_job_path = [job_ligand_file_path, job_complex_file_path]
             if(cluster_config is not None):
-                cluster_config["Sub_job"]["queue_job_options"]['partition'] = "gpu"
+                cluster_config["Sub_job"]["queue_job_options"]['partition'] = "standard-g"
             ##############################################################################
         else:
             if (use_gpu):

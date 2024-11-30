@@ -11,5 +11,5 @@ rule fep_gather_dGs:
     output:
         out_file_path=run_path+"/dG_results.tsv",
     shell:
-        "python {params.script_dir}/free_energy/calculate_ABFE_ligand_dG.py --in_lig_path {input.ligand_var} --in_comp_path {input.complex_var} --out_csv_path {output.out_file_path}"
+        "/projappl/project_462000007/ABFE_workflow/bin/python {params.script_dir}/free_energy/calculate_ABFE_ligand_dG.py --in_lig_path {input.ligand_var} --in_comp_path {input.complex_var} --out_csv_path {output.out_file_path}"
 
